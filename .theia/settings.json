@@ -1,0 +1,8 @@
+{
+   "cpp.buildConfigurations": [
+      {
+         "name": "ndless",
+         "directory": "/workspace/glowing-adventure"
+      }
+   ]
+}
