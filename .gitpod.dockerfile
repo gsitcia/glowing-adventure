@@ -10,5 +10,5 @@ RUN apt-get update \
     && apt-get update \
     && apt-cache policy docker-ce \
 #    && apt-get -yq install docker-ce \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 #    && gpasswd -a gitpod docker
