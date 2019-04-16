@@ -2,4 +2,5 @@ image:
   file: .gitpod.dockerfile
 
 tasks:
-  - init: git clone --recursive https://github.com/ndless-nspire/Ndless.git /workspace/Ndless
+  - init: git clone https://github.com/ndless-nspire/Ndless.git /workspace/Ndless
+  - init: docker pull ndless/ndless-sdk
