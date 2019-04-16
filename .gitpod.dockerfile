@@ -1,9 +1,10 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-full:latest
 
-# add your tools here
 USER root
-RUN apt-get update
-RUN apt-get install libgmp-dev
-RUN apt-get install libpython2.7-stdlib
-RUN apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
+
+# Install ndless toolchain dependencies
+# libmpc3, libmpfr6, libgmp-dev, libpython2.7
+RUN apt-get update \
+    && apt-get install -yq libmpc3 libmpfr6 libgmp-dev libpython2.7 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
