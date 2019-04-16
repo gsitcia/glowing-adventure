@@ -1,0 +1,12 @@
+[
+    {
+        "arguments": [
+            "gcc",
+            "-I",
+            "/ndless-sdk/include",
+            "main.c"
+        ],
+        "directory": "/workspace/glowing-adventure/bob",
+        "file": "main.c"
+    }
+]
