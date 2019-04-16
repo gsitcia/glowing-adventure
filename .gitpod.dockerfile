@@ -3,5 +3,6 @@ USER root
 RUN chown -R root /ndless-sdk
 
 FROM gitpod/workspace-full:latest
+USER root
 RUN mkdir /ndless-sdk
 COPY --from=0 /ndless-sdk /ndless-sdk
