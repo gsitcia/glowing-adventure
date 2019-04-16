@@ -1,6 +1,6 @@
 FROM ndless/ndless-sdk:latest
 USER root
-RUN chown -R gitpod:gitpod /ndless-sdk
+RUN chown -R root /ndless-sdk
 
 FROM gitpod/workspace-full:latest
 RUN mkdir /ndless-sdk
