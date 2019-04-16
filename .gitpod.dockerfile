@@ -8,7 +8,6 @@ RUN apt-get update \
     && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
     && add-apt-repository -yq "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" \
     && apt-get update \
-    && echo "WE GOT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" \
     && apt-get -yq install docker-ce \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* \
     && gpasswd -a gitpod docker
