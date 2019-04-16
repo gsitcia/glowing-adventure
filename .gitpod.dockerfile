@@ -13,4 +13,4 @@ RUN apt-get update \
     -o Dpkg::Options::="--force-confold" install docker-ce \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* \
     && gpasswd -a gitpod docker \
-    && dockerd &
+    && mkdir /var/lib/docker
