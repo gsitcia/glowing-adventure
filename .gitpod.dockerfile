@@ -7,10 +7,3 @@ USER root
 RUN apt-get update \
     && apt-get install -yq libmpc-dev libmpfr-dev libgmp-dev libpython2.7 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
-
-USER gitpod
-
-RUN cd /workspace
-RUN git clone --recursive https://github.com/ndless-nspire/Ndless.git
-
-USER root
