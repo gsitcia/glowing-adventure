@@ -1,3 +1,7 @@
-FROM gitpod/workspace-full:latest
+FROM ndless/ndless-sdk:latest
+USER root
+RUN chown -R gitpod:gitpod /ndless-sdk
 
-COPY --from=ndless/ndless-sdk:latest /ndless-sdk/ /ndless-sdk
+FROM gitpod/workspace-full:latest
+RUN mkdir /ndless-sdk
+COPY --from=0 /ndless-sdk /ndless-sdk
