@@ -9,6 +9,7 @@ RUN apt-get update \
     && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" \
     && apt-get update \
     && apt-cache policy docker-ce \
-#    && apt-get -yq install docker-ce \
+    && DEBIAN_FRONTEND=noninteractive apt-get -yq -o Dpkg::Options::="--force-confdef" \
+    -o Dpkg::Options::="--force-confold" install docker-ce \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 #    && gpasswd -a gitpod docker
