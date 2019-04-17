@@ -12,9 +12,10 @@ COPY --from=0 /ndless-sdk /ndless-sdk
 RUN chown -R gitpod:gitpod /ndless-sdk
 # install dependencies
 RUN apt-get update \
-    && apt-get install -yq libmpc-dev libmpfr-dev libgmp-dev python2.7-dev \
+    && apt-get install -yq libmpc-dev libmpfr-dev libgmp-dev python2.7-dev clang-tools-7 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* \
-    && ln -s /usr/lib/x86_64-linux-gnu/libmpfr.so.6.0.1 /usr/lib/x86_64-linux-gnu/libmpfr.so.4
+    && ln -s /usr/lib/x86_64-linux-gnu/libmpfr.so.6.0.1 /usr/lib/x86_64-linux-gnu/libmpfr.so.4 \
+    && update-alternatives /usr/bin/clangd clangd /usr/bin/clangd-7 100
 # manually install this dependency (because it's out of date)
 RUN wget -q http://mirrors.kernel.org/ubuntu/pool/main/b/boost1.54/libboost-program-options1.54.0_1.54.0-4ubuntu3_amd64.deb \
     && dpkg -i libboost-program-options1.54.0_1.54.0-4ubuntu3_amd64.deb \
