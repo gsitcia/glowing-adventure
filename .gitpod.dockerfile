@@ -19,5 +19,8 @@ RUN apt-get update \
 RUN wget -q http://mirrors.kernel.org/ubuntu/pool/main/b/boost1.54/libboost-program-options1.54.0_1.54.0-4ubuntu3_amd64.deb \
     && dpkg -i libboost-program-options1.54.0_1.54.0-4ubuntu3_amd64.deb \
     && rm libboost-program-options1.54.0_1.54.0-4ubuntu3_amd64.deb
+RUN wget -q http://mirrors.kernel.org/ubuntu/pool/universe/l/llvm-toolchain-8/clang-tools-8_8-3_amd64.deb \
+    && dpkg -i clang-tools-8_8-3_amd64.deb \
+    && rm clang-tools-8_8-3_amd64.deb
 # testing includes/clangd stuff
 RUN cp /ndless-sdk/include/libndls.h /usr/include
