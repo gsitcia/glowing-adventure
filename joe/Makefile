@@ -31,7 +31,7 @@ all: $(EXE).prg.tns
 
 %.o: %.cpp
 	$(GXX) $(GCCFLAGS) -c $<
-	
+
 %.o: %.S
 	$(AS) -c $<
 
@@ -47,3 +47,6 @@ $(EXE).prg.tns: $(EXE).tns
 
 clean:
 	rm -f *.o $(DISTDIR)/$(EXE).tns $(DISTDIR)/$(EXE).elf $(DISTDIR)/$(EXE).prg.tns
+
+hide:
+	rm -f *.o *.elf *.prg.tns
