@@ -1,6 +1,6 @@
 FROM gitpod/workspace-full:latest
 USER root
-RUN adduser --system --no-create-home --uid 198869 --gid 198869 bob
+RUN adduser --system --no-create-home --uid 198869 bob
 USER bob
 COPY --from=0 /ndless-sdk /ndless-sdk
 USER root
