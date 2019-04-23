@@ -7,5 +7,5 @@ COPY --from=0 /ndless-sdk/ndless-sdk /ndless-sdk
 USER root
 RUN chown -R gitpod:gitpod /ndless-sdk
 RUN apt-get update \
-    && apt-get install -yq libmpc-dev libmpfr-dev libgmp-dev \
+    && apt-get install -yq libmpc-dev libmpfr-dev libgmp-dev libboost-program-options-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* \

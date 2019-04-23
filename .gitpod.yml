@@ -1,2 +1,5 @@
 image:
   file: .temp.dockerfile
+
+tasks:
+  - command: export PATH=$PATH:/ndless-sdk/bin:/ndless-sdk/toolchain/install/bin
