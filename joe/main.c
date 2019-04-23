@@ -15,7 +15,7 @@ static int match(device_t self) {
   usbd_interface2device_handle(uaa->iface,&dev);
   char* cp = malloc(1024);
   usbd_devinfo(dev,1,cp);
-  fancy_puts(cp);
+  fancyputs(cp);
   return UMATCH_NONE;
 }
 
@@ -23,12 +23,6 @@ static int (*methods[])(device_t) = {match, NULL, NULL, NULL};
 
 struct ulol_softc {
 	device_t sc_dev;
-	usbd_interface_handle sc_iface;
-	usbd_pipe_handle sc_intrpipe;
-	int sc_ep_addr;
-	struct s_usb_pipe_buf sc_ibuf;
-	int sc_isize;
-	int sc_enabled;
 };
 
 static inline int wa_syscall(int nr) {
