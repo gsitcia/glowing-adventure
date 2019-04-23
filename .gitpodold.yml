@@ -1,5 +1,5 @@
 image:
-  file: .gitpod.dockerfile
+  file: .old.dockerfile
 
 tasks:
   - command: export PATH=$PATH:/ndless-sdk/bin:/ndless-sdk/toolchain/install/bin
