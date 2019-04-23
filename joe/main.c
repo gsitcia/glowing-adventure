@@ -34,7 +34,7 @@ int main(void) {
 	assert_ndless_rev(801);
 	//nl_no_scr_redraw(); // is what I wish I could do
     wa_syscall(e_nl_no_scr_redraw);
-	nio_init(&csl,NIO_MAX_COLS,1,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,TRUE);
+	nio_init(&csl,NIO_MAX_COLS,NIO_MAX_ROWS,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,TRUE);
 	nio_set_default(&csl);
 	nio_fflush(&csl);
 	thing_register();
