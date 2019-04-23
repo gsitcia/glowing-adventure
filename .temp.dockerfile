@@ -1,8 +1,9 @@
-FROM gitpod/workspace-full:latest
+FROM gsitcia/ndless-sdk
 USER root
-RUN adduser --system --no-create-home --uid 198869 bob
-USER bob
-COPY --from=gsitcia/my-first-repo /ndless-sdk /ndless-sdk
+RUN chown -R root:root /ndless-sdk
+
+FROM gitpod/workspace-full:latest
+COPY --from=0 /ndless-sdk/ndless-sdk /ndless-sdk
 USER root
 RUN chown gitpod:gitpod /ndless-sdk
 RUN apt-get update \
