@@ -1,5 +1,5 @@
 image:
-  file: .temp.dockerfile
+  file: .gitpod.dockerfile
 
 tasks:
   - init: /workspace/glowing-adventure/.startup.sh
