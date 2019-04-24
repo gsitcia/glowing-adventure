@@ -4,6 +4,16 @@
 #include <nspireio/nspireio.h>
 #include <syscall-list.h>
 
+int fancyputs(char *s) {
+	// very inefficient
+	nio_console csl;
+	nio_init(&csl,NIO_MAX_COLS,NIO_MAX_ROWS,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,TRUE);
+	nio_clear(&csl);
+	nio_fprintf(&csl,"%s",s);
+	nio_free(&csl);
+	return 0;
+}
+
 static int match(device_t self) {
   struct usb_attach_arg *uaa = device_get_ivars(self);
   if (!uaa->iface) {
@@ -32,16 +42,6 @@ static inline int wa_syscall(int nr) {
 		: [nr] "i" (nr)
 		: "memory", "r1", "r2", "r3", "r4", "r12", "lr");
   return r0;
-}
-
-int fancyputs(char *s) {
-	// very inefficient
-	nio_console csl;
-	nio_init(&csl,NIO_MAX_COLS,NIO_MAX_ROWS,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,TRUE);
-	nio_clear(&csl);
-	nio_fprintf(&csl,"%s",s);
-	nio_free(&csl);
-	return 0;
 }
 
 int thing_register(void) {
