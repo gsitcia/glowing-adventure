@@ -4,8 +4,6 @@
 #include <nspireio/nspireio.h>
 #include <syscall-list.h>
 
-nio_console csl;
-
 static int match(device_t self) {
   struct usb_attach_arg *uaa = device_get_ivars(self);
   if (!uaa->iface) {
@@ -37,8 +35,12 @@ static inline int wa_syscall(int nr) {
 }
 
 int fancyputs(char *s) {
+	// very inefficient
+	nio_console csl;
+	nio_init(&csl,NIO_MAX_COLS,NIO_MAX_ROWS,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,TRUE);
 	nio_clear(&csl);
-	nio_printf("%s",s);
+	nio_fprintf(&csl,"%s",s);
+	nio_free(&csl);
 	return 0;
 }
 
@@ -51,10 +53,8 @@ int main(void) {
 	assert_ndless_rev(801);
 	//nl_no_scr_redraw(); // is what I wish I could do
 	wa_syscall(e_nl_no_scr_redraw);
-	nio_init(&csl,NIO_MAX_COLS,2,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,TRUE);
-	nio_set_default(&csl);
-	nio_fflush(&csl);
 	thing_register();
 	nl_set_resident();
+	fancyputs((char*)"Driver Installed.");
 	return 0;
 }
