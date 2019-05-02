@@ -2,5 +2,4 @@ image:
   file: .gitpod.dockerfile
 
 tasks:
-  - init: /workspace/glowing-adventure/.startup.sh
-    command: export PATH=$PATH:/ndless-sdk/bin:/ndless-sdk/toolchain/install/bin
+  - command: export PATH=$PATH:/ndless-sdk/bin:/ndless-sdk/toolchain/install/bin && /workspace/glowing-adventure/.startup.sh
