@@ -23,7 +23,7 @@ int main(void) {
 	nio_init(&csl,NIO_MAX_COLS,NIO_MAX_ROWS,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,1);
     fprintf(&csl,"test%s\n","ing");
     wait_key_pressed();
-	fmem(&csl,(void *)bob,100);
+	//fmem(&csl,(void *)bob,100);
 	nio_free(&csl);
 	wait_key_pressed();
 	return 0;
