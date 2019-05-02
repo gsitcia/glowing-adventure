@@ -22,6 +22,7 @@ int main(void) {
 	nio_console csl;
 	nio_init(&csl,NIO_MAX_COLS,NIO_MAX_ROWS,0,0,NIO_COLOR_WHITE,NIO_COLOR_BLACK,1);
     nio_fprintf(&csl,"test%s\n","ing");
+	nio_fprintf(&csl,"An int is %d bytes or something\n",sizeof(int));
     wait_key_pressed();
 	fmem(&csl,(void *)bob,100);
 	nio_free(&csl);
