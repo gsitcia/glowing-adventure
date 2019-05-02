@@ -1,6 +1,5 @@
 #include <libndls.h>
 #include <nspireio/nspireio.h>
-#include <stdint.h>
 
 int bob(void) {
 	return 42;
