@@ -9,7 +9,7 @@ GENZEHN = genzehn
 EXE = niotest
 GCCFLAGS = -Wall -W -marm
 LDFLAGS =
-ZEHNFLAGS = --name "$(EXE)"
+ZEHNFLAGS = --name "$(EXE)" --compress
 BASESTRING = 'https://raw.githubusercontent.com/gsitcia/glowing-adventure/master/'
 SPLITSTRING = 'glowing-adventure/'
 

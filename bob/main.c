@@ -2,7 +2,7 @@
 #include <nspireio/nspireio.h>
 
 int bob(void) {
-	return 42;
+	return 0x42;
 }
 
 int fmem(nio_console *csl, void *ptr, int n) {
