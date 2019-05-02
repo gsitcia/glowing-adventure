@@ -26,6 +26,10 @@ int main(void) {
     nio_fprintf(&csl,"Next we'll test the changing stuff thing\n");
     wait_key_pressed();
 	fmem(&csl,(void *)bob,100);
+	wait_key_pressed();
+	*(uint8_t*)(void*)bob = 42;
+	fmem(&csl,(void *)bob,100);
+	nio_fprintf(&csl,"Magic %d",bob());
 	nio_free(&csl);
 	wait_key_pressed();
 	return 0;
