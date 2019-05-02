@@ -8,7 +8,7 @@ int bob(void) {
 int fmem(nio_console *csl, void *ptr, int n) {
 	uint8_t *t = (uint8_t *) ptr;
 	for (int i = 0; i < n; n++) {
-		nio_fprintf(csl,"%02x ",*(ptr+i));
+		nio_fprintf(csl,"%02x ",*(t+i));
 		if (i%16==15) {
 			nio_fprintf(csl,"\n");
 		}
