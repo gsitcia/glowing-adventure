@@ -3,7 +3,7 @@
 
 int fmem(nio_console *csl, void volatile *ptr) {
 	uint32_t volatile *t = (uint32_t volatile *) ptr;
-	nio_fprintf(csl,"Value: 0x%08x or %d",*t,*t);
+	nio_fprintf(csl,"Value: 0x%08x or %d\n",*t,*t);
 	return 0;
 }
 
@@ -30,7 +30,7 @@ int main(void) {
 				fmem(&csl,(void volatile *)ptr);
 				break;
 			case 'o'://poke
-				nio_fprintf(&csl,"Setting 0x%08x to 0x%08x",ptr,v);
+				nio_fprintf(&csl,"Setting 0x%08x to 0x%08x\n",ptr,v);
 				poke((void volatile *)ptr,v);
 				break;
 		}
