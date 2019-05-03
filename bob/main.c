@@ -1,19 +1,13 @@
 #include <libndls.h>
 #include <nspireio/nspireio.h>
 
-int fmem(nio_console *csl, void *ptr, int n) {
-	volatile uint8_t *t = (uint8_t *) ptr;
-	for (int i = 0; i < n; i++) {
-		nio_fprintf(csl,"%02x ",*(t+i));
-		if (i%16==15) {
-			nio_fprintf(csl,"\n");
-		}
-	}
-	if (n%16 != 0) nio_fprintf(csl,"\n");
+int fmem(nio_console *csl, void volatile *ptr) {
+	uint32_t volatile *t = (uint32_t volatile *) ptr;
+	nio_fprintf(csl,"Value: 0x%08x or %d",*t,*t);
 	return 0;
 }
 
-int poke(int *ptr, int v) {
+int poke(uint32_t volatile *ptr, uint32_t v) {
 	*ptr=v;
 	return 0;//that's it?
 }
@@ -33,10 +27,11 @@ int main(void) {
 				nio_fprintf(&csl,"Quitting\n");
 				break;
 			case 'e'://peek
-				fmem(&csl,(void *)ptr,v);
+				fmem(&csl,(void volatile *)ptr);
 				break;
 			case 'o'://poke
-				poke((void *)ptr,v);
+				nio_fprintf(&csl,"Setting 0x%08x to 0x%08x",ptr,v);
+				poke((void volatile *)ptr,v);
 				break;
 		}
 	}
