@@ -6,7 +6,7 @@ GXX = nspire-g++
 LD  = nspire-ld
 GENZEHN = genzehn
 
-EXE = niotest
+EXE = poke
 GCCFLAGS = -Wall -W -marm
 LDFLAGS =
 ZEHNFLAGS = --name "$(EXE)" --compress
