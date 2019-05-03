@@ -26,7 +26,7 @@ int main(void) {
 	while (!stop) {
 		char c;
 		uint32_t ptr,v;
-		nio_fscanf(&csl,"%c %li %li",&c,&ptr,&v);
+		nio_fscanf(&csl,"%c %lx %lx",&c,&ptr,&v);
 		switch (c) {
 			case 'q':
 				stop=1;
