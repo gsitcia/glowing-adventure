@@ -12,9 +12,9 @@ int poke(uint32_t volatile *ptr, uint32_t v) {
 	return 0;//that's it?
 }
 
-int print_memory_around_ptr(nio_console *csl, volatile void* ptr, int n) {
+int print_memory_around_ptr(nio_console *csl, volatile void* ptr, uint32_t n) {
   volatile uint8_t* t = (volatile uint8_t*) ptr;
-  for (int i = 0; i < n; i++) {
+  for (uint32_t i = 0; i < n; i++) {
     nio_fprintf(csl,"%02x ",*(t+i));
     if (i%16 == 15) {
       nio_fprintf(csl,"\n");
@@ -22,6 +22,20 @@ int print_memory_around_ptr(nio_console *csl, volatile void* ptr, int n) {
   }
   if (n%16 != 0) nio_fprintf(csl,"\n");
   return 0;
+}
+
+int search(nio_console *csl, volatile uint32_t* ptr, uint32_t n, int sz) {
+	int flag = 1;
+	for (int i = 0; i < sz; i++) {
+		if (*(ptr+i)==n) {
+			nio_fprintf(csl,"Found at: 0x%08x\n",ptr+i);
+			flag = 0;
+		}
+	}
+	if (flag) {
+		nio_fprintf(csl,"Not found\n");
+	}
+	return 0;
 }
 
 int main(void) {
@@ -48,6 +62,10 @@ int main(void) {
 				break;
 			case 'h'://hex data
 				print_memory_around_ptr(&csl,(void volatile *)ptr,v);
+				break;
+			case 's'://search
+				// searches 256 bytes before and after the first argument
+				search(&csl,(uint32_t volatile *)ptr-256,v,0x200);// I mean, it could be...
 				break;
 		}
 	}
