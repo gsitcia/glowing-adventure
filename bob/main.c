@@ -46,6 +46,7 @@ int main(void) {
 	while (!stop) {
 		char c;
 		uint32_t ptr,v;
+		v = 0;// Accidentally did something dumb
 		nio_fprintf(&csl,">> ");
 		nio_fscanf(&csl,"%c %lx %lx",&c,&ptr,&v);
 		switch (c) {
@@ -64,8 +65,8 @@ int main(void) {
 				print_memory_around_ptr(&csl,(void volatile *)ptr,v);
 				break;
 			case 's'://search
-				// searches 256 bytes before and after the first argument
-				search(&csl,(uint32_t volatile *)ptr-256,v,0x200);// I mean, it could be...
+				// searches 0x1000 bytes before and after the first argument
+				search(&csl,(uint32_t volatile *)ptr-0x1000,v,0x2000);// I mean, it could be...
 				break;
 		}
 	}
